@@ -1,8 +1,8 @@
 const inputRef = document.querySelector("#name-input");
 const nameRef = document.querySelector("#name-output");
 
-inputRef.addEventListener("input", helloName);
+inputRef.addEventListener("input", onHelloName);
 
-function helloName({ currentTarget: input } = {}) {
+function onHelloName({ currentTarget: input } = {}) {
   nameRef.textContent = input.value ? input.value : "Anonymous";
 }

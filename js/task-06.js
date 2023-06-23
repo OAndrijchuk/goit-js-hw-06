@@ -7,7 +7,7 @@ function unFocusValid(event) {
     dataset: { length: dataLength },
     value,
     classList,
-  } = event.currentTarget;
+  } = event.target;
   classList.add("valid");
   if (dataLength >= value.length) {
     classList.replace("invalid", "valid");

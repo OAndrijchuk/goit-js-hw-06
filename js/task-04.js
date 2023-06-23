@@ -1,22 +1,16 @@
-const counter = document.querySelector("#counter");
-// Це доступ до елементів здорової людини (так мені здається)
-const value = counter.children.value;
-const decBtn = counter.firstElementChild;
-const incBtn = counter.lastElementChild;
-
-// Це я бавився і ось таке вийшло і воно працює)))
-// const { value, 0: decBtn, 2: incBtn } = counter.children;
+const value = document.querySelector("#value");
+const decBtn = document.querySelector('[data-action="decrement"]');
+const incBtn = document.querySelector('[data-action="increment"]');
 
 let counterValue = 0;
 
-incBtn.addEventListener("click", incAction);
-decBtn.addEventListener("click", decAction);
+incBtn.addEventListener("click", onChangeCounter);
+decBtn.addEventListener("click", onChangeCounter);
 
-function incAction() {
-  counterValue += 1;
-  value.textContent = counterValue;
-}
-function decAction() {
-  counterValue -= 1;
+function onChangeCounter({ target }) {
+  target.dataset.action === "decrement"
+    ? (counterValue -= 1)
+    : (counterValue += 1);
+
   value.textContent = counterValue;
 }
