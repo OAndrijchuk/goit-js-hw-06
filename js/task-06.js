@@ -8,10 +8,8 @@ function unFocusValid(event) {
     value,
     classList,
   } = event.target;
-  classList.add("valid");
-  if (dataLength >= value.length) {
+  classList.add("invalid");
+  if (Number(dataLength) === value.length) {
     classList.replace("invalid", "valid");
-  } else {
-    classList.replace("valid", "invalid");
   }
 }

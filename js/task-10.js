@@ -9,12 +9,11 @@ destroyBtnRef.addEventListener("click", destroyBoxes);
 
 function createBoxesGeneral() {
   const countOfElements = Number.parseInt(inputRef.value);
-  if (countOfElements > 0 && countOfElements < 101 && !isNaN(countOfElements)) {
-    generalContRef.innerHTML = "";
+  if (!isNaN(countOfElements)) {
     generalContRef.append(...createBoxes(countOfElements));
     return;
   }
-  alert("Виберіть кількість елементів від 1 до 100");
+  alert("Виберіть кількість елементів");
 }
 
 function destroyBoxes() {
@@ -25,9 +24,10 @@ function createBoxes(amount) {
   const elements = [];
 
   for (let i = 0; i < amount; i += 1) {
+    const boxSize = 30 + i * 10;
     const elem = document.createElement("div");
-    elem.style.width = `${30 + i * 10}px`;
-    elem.style.height = `${30 + i * 10}px`;
+    elem.style.width = `${boxSize}px`;
+    elem.style.height = `${boxSize}px`;
     elem.style.backgroundColor = getRandomHexColor();
     elements.push(elem);
   }
