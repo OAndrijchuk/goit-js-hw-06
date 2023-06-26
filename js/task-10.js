@@ -2,7 +2,6 @@ const inputRef = document.querySelector("#controls>input");
 const createBtnRef = document.querySelector("[data-create]");
 const destroyBtnRef = document.querySelector("[data-destroy]");
 const generalContRef = document.querySelector("#boxes");
-console.dir(generalContRef);
 
 createBtnRef.addEventListener("click", createBoxesGeneral);
 destroyBtnRef.addEventListener("click", destroyBoxes);
@@ -18,12 +17,14 @@ function createBoxesGeneral() {
 
 function destroyBoxes() {
   generalContRef.innerHTML = "";
+  totalElements = 0;
 }
 
+let totalElements = 0;
 function createBoxes(amount) {
   const elements = [];
 
-  for (let i = 0; i < amount; i += 1) {
+  for (let i = totalElements; i < amount + totalElements; i += 1) {
     const boxSize = 30 + i * 10;
     const elem = document.createElement("div");
     elem.style.width = `${boxSize}px`;
@@ -31,6 +32,8 @@ function createBoxes(amount) {
     elem.style.backgroundColor = getRandomHexColor();
     elements.push(elem);
   }
+
+  totalElements += amount;
   return elements;
 }
 
